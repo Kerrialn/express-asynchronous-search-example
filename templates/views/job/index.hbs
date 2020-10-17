@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {{>bsstyles}}
+</head>
+
+<style>
+  .card-link {
+    text-decoration: none;
+    color: black;
+  }
+
+  .card-link:hover .card {
+    text-decoration: none;
+  }
+
+  #jobs {
+    background-color: red;
+    padding: 10px;
+  }
+</style>
+
+<body>
+  {{>navbar}}
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-4 mb-5 mt-5">
+        <input class="form-control" type="text" id="keyword" name="keyword" autocomplete="off" autofocus
+          placeholder="What job are you looking for?" />
+      </div>
+    </div>
+    <div>
+      <div id="jobs"></div>
+    </div>
+  </div>
+
+  <script id="jobsTemplate" type="x-tmpl-mustache">
+      {{#jobs}}
+      <a class="card-link" href="/job/{{_id}}">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text">{{description}}</p>
+          </div>
+        </div>
+      </a>
+      {{/jobs}}
+  </script>
+
+  <script src="https://unpkg.com/mustache@latest"></script>
+  <script type="text/javascript" src="/js/search.js"></script>
+
+  {{>bsscripts}}
+</body>
+
+</html>
